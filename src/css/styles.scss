@@ -9,13 +9,39 @@
   margin: auto;
 }
 
+.notes{
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  font-size: 25%;
+}
+
 .textarea{
-  border: 1px solid black;
+  border: none;
   padding: 4px;
-  height: 1000px;
-  width: 400px;
+  height: 350px;
+  width: 600px;
+  border: 1px solid rgb(173, 173, 173);
+}
+
+.placing{
+  position: absolute;
+}
+
+.backdrop{
+  border: 1px solid rgb(173, 173, 173);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  border-bottom: none;
+}
+
+.onHover:hover {
+  transform: scale(1.1);
+  transition: .2s all ease;
+  overflow: hidden;
+  .active{
+    translate: 0px, 5px;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -35,12 +61,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgb(216, 211, 211);
-}
-
-.onHover:hover {
-  transform: scale(1.1);
-  transition: .2s all ease;
-  .active{
-    translate: 0px, 5px;
-  }
 }
