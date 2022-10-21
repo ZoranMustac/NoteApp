@@ -3,75 +3,17 @@ import "../css/styles.scss";
 import Notes from "./Notes";
 import TextareaPopup from "./TextareaPopup";
 
-function Home() {
-  const [notes, setNotes] = useState([
-    {
-      id: 0,
-      text: "String",
-    },
-    {
-      id: 1,
-      text: "Yo",
-    },
-    {
-      id: 2,
-      text: "Hello",
-    },
-    {
-      id: 3,
-      text: "Hi",
-    },
-    {
-      id: 0,
-      text: "String",
-    },
-    {
-      id: 1,
-      text: "Yo",
-    },
-    {
-      id: 2,
-      text: "Hello",
-    },
-    {
-      id: 3,
-      text: "Hi",
-    },
-    {
-      id: 0,
-      text: "String",
-    },
-    {
-      id: 1,
-      text: "Yo",
-    },
-    {
-      id: 2,
-      text: "Hello",
-    },
-    {
-      id: 3,
-      text: "Hi",
-    },
-  ]);
-
+const Home = () => {
   const [show, setShow] = useState(false);
-
-  const closePopup = () => {
-    setShow(false);
-  };
-
-  const data = (note: any) => {
-    return <Notes key={note.id} text={note.text} />;
-  };
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    const savedNotes = localStorage.getItem("notes");
+    setNotes(JSON.parse(localStorage.getItem("notes") || "{}"));
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+  const refresher = () => {
+    setNotes(JSON.parse(localStorage.getItem("notes") || ""));
+  };
 
   return (
     <div>
@@ -84,17 +26,23 @@ function Home() {
         >
           Add note
         </button>
+
         <div className="placing">
-          {show ? (
-            <TextareaPopup setClose={closePopup}>Hello</TextareaPopup>
-          ) : (
-            false
+          {show && (
+            <TextareaPopup show={show} setShow={setShow} refresher={refresher}>
+              Hello
+            </TextareaPopup>
           )}
         </div>
-        <div className="grid grid-cols-4 gap-4 pt-12">{notes.map(data)}</div>
+
+        <div className="grid grid-cols-4 gap-4 pt-12">
+          {notes.map((item: any) => (
+            <Notes key={item.id} item={item} refresher={refresher} />
+          ))}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Home;

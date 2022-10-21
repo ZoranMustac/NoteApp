@@ -9,11 +9,16 @@
   margin: auto;
 }
 
+.notesarea{
+  height: 200px;
+  width: 233px;
+  border-radius: 10px;
+}
+
 .notes{
   overflow: hidden;
-  width: 150px;
-  height: 150px;
-  font-size: 25%;
+  width: 250px;
+  height: 250px;
 }
 
 .textarea{
@@ -24,8 +29,19 @@
   border: 1px solid rgb(173, 173, 173);
 }
 
+.noBorder{
+  border: none;
+}
+
 .placing{
   position: absolute;
+  z-index: 1;
+}
+
+.markdownPosition{
+  position: absolute;
+  z-index: 1;
+  margin-bottom: 30px;
 }
 
 .backdrop{
@@ -39,6 +55,7 @@
   transform: scale(1.1);
   transition: .2s all ease;
   overflow: hidden;
+  cursor: pointer;
   .active{
     translate: 0px, 5px;
   }
