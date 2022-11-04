@@ -8,11 +8,11 @@ const Home = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    setNotes(JSON.parse(localStorage.getItem("notes") || "{}"));
+    setNotes(JSON.parse(localStorage.getItem("notes") || "[]"));
   }, []);
 
   const refresher = () => {
-    setNotes(JSON.parse(localStorage.getItem("notes") || ""));
+    setNotes(JSON.parse(localStorage.getItem("notes") || "[]"));
   };
 
   return (

@@ -10,8 +10,9 @@ const TextareaPopup: React.FC<ITextareaProps> = ({
   const [content, setContent] = useState("");
 
   const handleAdd = () => {
-    const savedToLocalStorage =
-      JSON.parse(localStorage.getItem("notes") || "") || [];
+    const savedToLocalStorage = JSON.parse(
+      localStorage.getItem("notes") || "[]"
+    );
     if (!content) return alert("Content is required");
 
     let newSave = {
